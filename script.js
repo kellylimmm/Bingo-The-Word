@@ -29,7 +29,7 @@ let phrases = [
 "casting a magic spell"
 ]
 
-
+//phraseArray = "g","a", etc.
 var phraseArray = getRandomPhraseArray(phrases);
 addPhraseToDisplay(phraseArray);
 
@@ -47,7 +47,7 @@ function getRandomPhraseArray(phrases) {
 
 }
 
-//add random phrase to display
+//Add random phrase to display
 function addPhraseToDisplay(arr) {
     ul.innerHTML = "";
 
@@ -85,26 +85,24 @@ function isLetterMatch(btn) {
 
 function checkWin() {
 
-    //create answerArray = [];
+    //Create answerArray = [];
     answerArray = [];
-    //create var for li using document.queryselectorall
+    //Create var for li using document.querySelectorAll
     var liText = document.querySelectorAll(".letter");
-    //create for loop
+    //Create for loop
     for (var i = 0; i < liText.length; i++){
-    //push inner text of check li element into answerarray
+    //Push inner text of check li element into answerArray
         answerArray.push(liText[i].innerText);
     }
-    //check if _ is in answer array
-    //if _ not in array - player wins
+    //Check if _ is in answerArray
+    //If _ not in array, player wins
     if (answerArray.includes("_") === false) {
-
-        resetGame();
         alert("You Win!");
+        resetGame();
 
     } else if (missed === 5) {
-
-        resetGame();
         alert("Game Over!");
+        resetGame();
     }
 
 }
@@ -112,6 +110,7 @@ function checkWin() {
 
 var missed = 0;
 
+//Add click to keyboard. If lose a turn, heart image changes.
 keyboard.addEventListener('click', (event) => {
     let letterFound = isLetterMatch(event);
 
@@ -127,33 +126,25 @@ keyboard.addEventListener('click', (event) => {
         }
     }
 
-    checkWin ();
-
+    var timeOut = setTimeout(function(){
+        checkWin ();}, 3000)
 });
 
 
 function updatePhraseToDisplay(letter) {
-
-
-    for (var i = 0; i < phraseArray.length; i++){
+for (var i = 0; i < phraseArray.length; i++){
         if (letter === phraseArray[i]) {
-
-            ul.childNodes[i].textContent = letter;
-
+        ul.childNodes[i].textContent = letter;
         }
     }
-
 }
 
 function resetHearts() {
-    console.log(missed); 0
-    console.log(heart);
     heart[0].setAttribute('src','heart.svg');
     heart[1].setAttribute('src','heart.svg');
     heart[2].setAttribute('src','heart.svg');
     heart[3].setAttribute('src','heart.svg');
     heart[4].setAttribute('src','heart.svg');
-
 }
 
 
@@ -164,23 +155,23 @@ function resetGame() {
     // returnLettersToNormal();
     let phraseArray = getRandomPhraseArray(phrases);
     addPhraseToDisplay(phraseArray);
-
 }
 
+//Reset button
 document.getElementById("reset").addEventListener("click",resetGame);
 
 function changeChosenButtons(){
     var buttonCheck = document.getElementsByTagName('button');
     for (var i = 0; i <buttonCheck.length; i++){
         buttonCheck[i].className ="";
-        //enable all buttons
+        //Enable all buttons
         buttonCheck[i].disabled = false;
-        //change all buttons to original color
+        //Change all buttons to original color
         buttonCheck[i].style.background = "#995DB5";
     }
 }
 
-  // create alphabet ul
+  //Create alphabet ul
 var buttons = function () {
     myButtons = document.getElementById('buttons');
     letters = document.createElement('ul');
