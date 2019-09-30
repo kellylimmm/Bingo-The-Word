@@ -23,10 +23,9 @@ body {
   background-image: url("polygon.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
-
 }
 
-button{
+button {
 
   background: #995DB5;
   color: #ECD5EF;
@@ -69,30 +68,21 @@ button{
   border: solid 1px white;
   flex-direction: row;
   font-size: 60px;
-
-  }
+}
 
 ol, li, ul {
 	padding: 0;
 	display: inline-block;
-
-
 }
 
 .container {
 	font-size: 14px;
-/*	display: flex;*/
 	justify-content: center;
 	align-items: center;
 	padding-bottom: 10px;
+	margin-top: -40px;
 }
 
-/*.keyboard {
-font-size: 20px;
-justify-content: center;
-
+#sentences{
+	font-size: 30px;
 }
-
-.section {
-font-size: 30px;
-}*/
