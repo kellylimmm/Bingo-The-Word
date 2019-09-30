@@ -9,6 +9,7 @@ var heart = document.getElementsByTagName('img');
 var reset = false;
 var buttons = document.getElementsByTagName("button")[0];
 var startButton = document.getElementById('reset');
+var hiddenPhraseArray = [];
 
 let phrases = [
 "gathering seashells on the shore",
@@ -36,6 +37,7 @@ addPhraseToDisplay(phraseArray);
 
 var numberOfLives = 5;
 
+//generate random phrase based on math.random
 function getRandomPhraseArray(phrases) {
     console.log(phrases);
     let randomString = phrases[Math.floor(Math.random()*phrases.length)];
@@ -45,10 +47,10 @@ function getRandomPhraseArray(phrases) {
 
 }
 
-
+//add random phrase to display
 function addPhraseToDisplay(arr) {
     ul.innerHTML = "";
-    var hiddenPhraseArray = [];
+
     for (var i = 0; i < arr.length; i++){
         if (arr[i] === " ") {
             hiddenPhraseArray[i] = "/";
@@ -82,15 +84,31 @@ function isLetterMatch(btn) {
 }
 
 function checkWin() {
-    if (letters.length === showLetters.length) {
+
+    //create answerArray = [];
+    answerArray = [];
+    //create var for li using document.queryselectorall
+    var liText = document.querySelectorAll(".letter");
+    //create for loop
+    for (var i = 0; i < liText.length; i++){
+    //push inner text of check li element into answerarray
+        answerArray.push(liText[i].innerText);
+    }
+    //check if _ is in answer array
+    //if _ not in array - player wins
+    if (answerArray.includes("_") === false) {
+
+        resetGame();
         alert("You Win!");
-        resetGame();
+
     } else if (missed === 5) {
-        alert("Game Over!");
+
         resetGame();
+        alert("Game Over!");
     }
 
 }
+
 
 var missed = 0;
 
@@ -100,6 +118,7 @@ keyboard.addEventListener('click', (event) => {
     if (event.target.tagName === "BUTTON") {
         event.target.classList = "chosen";
         event.target.disabled = "true";
+        event.target.style.background = "pink";
         if (letterFound === false && missed < 5) {
             heart[missed].setAttribute('src', 'lose.png');
             missed++;
@@ -154,7 +173,10 @@ function changeChosenButtons(){
     var buttonCheck = document.getElementsByTagName('button');
     for (var i = 0; i <buttonCheck.length; i++){
         buttonCheck[i].className ="";
+        //enable all buttons
         buttonCheck[i].disabled = false;
+        //change all buttons to original color
+        buttonCheck[i].style.background = "#995DB5";
     }
 }
 
