@@ -30,16 +30,8 @@ let phrases = [
 
 
 var phraseArray = getRandomPhraseArray(phrases);
-var hiddenPhraseArray = [];
+addPhraseToDisplay(phraseArray);
 
-for (var i = 0; i < phraseArray.length; i++){
-    if (phraseArray[i] === " ") {
-        hiddenPhraseArray[i] = "/";
-    } else {
-        hiddenPhraseArray[i] = "_";
-    }
-}
-addPhraseToDisplay(hiddenPhraseArray);
 
 
 var numberOfLives = 5;
@@ -55,9 +47,18 @@ function getRandomPhraseArray(phrases) {
 
 
 function addPhraseToDisplay(arr) {
+    ul.innerHTML = "";
+    var hiddenPhraseArray = [];
+    for (var i = 0; i < arr.length; i++){
+        if (arr[i] === " ") {
+            hiddenPhraseArray[i] = "/";
+        } else {
+            hiddenPhraseArray[i] = "_";
+        }
+    }
     for (var i = 0; i < arr.length; i++){
         let li = document.createElement('li');
-        li.textContent = arr[i];
+        li.textContent = hiddenPhraseArray[i];
         ul.appendChild(li);
         if (arr[i] != "/") {
             li.className = "letter";
@@ -82,13 +83,13 @@ function isLetterMatch(btn) {
 
 function checkWin() {
     if (letters.length === showLetters.length) {
-        reset = true;
         alert("You Win!");
+        resetGame();
     } else if (missed === 5) {
         alert("Game Over!");
-        reset = true;
+        resetGame();
     }
-    resetGame();
+
 }
 
 var missed = 0;
@@ -115,14 +116,13 @@ keyboard.addEventListener('click', (event) => {
 function updatePhraseToDisplay(letter) {
 
 
-for (var i = 0; i < phraseArray.length; i++){
-    if (letter === phraseArray[i]) {
+    for (var i = 0; i < phraseArray.length; i++){
+        if (letter === phraseArray[i]) {
 
+            ul.childNodes[i].textContent = letter;
 
-let li = document.createElement('li');
-    li.textContent = letter;
-    ul.replaceChild(li, ul.childNodes[i]);}
-}
+        }
+    }
 
 }
 
@@ -139,15 +139,16 @@ function resetHearts() {
 
 
 function resetGame() {
-    if (reset === true) {
-        missed = 0;
-        resetHearts();
-        changeChosenButtons();
-        // returnLettersToNormal();
-        let phraseArray = getRandomPhraseArray(sentences);
-        addPhraseToDisplay(sentences);
-    }
+    missed = 0;
+    resetHearts();
+    changeChosenButtons();
+    // returnLettersToNormal();
+    let phraseArray = getRandomPhraseArray(phrases);
+    addPhraseToDisplay(phraseArray);
+
 }
+
+document.getElementById("reset").addEventListener("click",resetGame);
 
 function changeChosenButtons(){
     var buttonCheck = document.getElementsByTagName('button');
