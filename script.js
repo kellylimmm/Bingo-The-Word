@@ -10,42 +10,72 @@ var reset = false;
 var buttons = document.getElementsByTagName("button")[0];
 var startButton = document.getElementById('reset');
 var hiddenPhraseArray = [];
+var getHint = document.getElementById("hint");
+var showClue = document.getElementById("clue");
 
 let phrases = [
-"gathering seashells on the shore",
-"planning a fabulous date night",
-"bidding in an online auction",
-"whispering softly i love you",
-"shopping for antique furniture",
-"staying warm on a chilly night",
-"working out with my personal trainer",
-"hiking through the rainforest",
-"gathering seashells on the sea shore",
-"hanging red lanterns",
-"performing card tricks",
-"making a ham sandwich",
-"fishing in the lake",
-"applying to coding school",
-"casting a magic spell"
+"i want it that way",
+"genie in a bottle",
+"i will always love you",
+"my heart will go on",
+"ice ice baby",
+"tears in heaven",
+"black or white",
+"baby one more time",
+"shape of my heart",
+"cry me a river",
+"a moment like this",
+"viva la vida",
+"empire state of mind",
+"hey there delilah",
+"say my name"
 ]
+
+hints = [
+"Boy Band",
+"Aladdin",
+"Singer's first name initials is W",
+"CD",
+"From 1990",
+"Classic",
+"From a Legend",
+"Catchy and Sexy",
+"Black and Blue album",
+"Solo Male",
+"Best Selling Single of 2002",
+"British Rock Band",
+"Rapper and Vocals",
+"PWT",
+"DC"
+];
 
 //phraseArray = "g","a", etc.
 var phraseArray = getRandomPhraseArray(phrases);
 addPhraseToDisplay(phraseArray);
 
 
+var ranNum;
 
 var numberOfLives = 5;
 
 //generate random phrase based on math.random
 function getRandomPhraseArray(phrases) {
     console.log(phrases);
-    let randomString = phrases[Math.floor(Math.random()*phrases.length)];
+    ranNum = parseInt(Math.floor(Math.random()*phrases.length));
+    let randomString = phrases[ranNum];
     console.log(randomString);
     let splitString = randomString.split("");
     return splitString;
 
 }
+
+//Get Hint
+hint.onclick = function() {
+
+    var getHint = hints[ranNum];
+    alert(getHint);
+
+  };
 
 //Add random phrase to display
 function addPhraseToDisplay(arr) {
@@ -185,4 +215,4 @@ var buttons = function () {
         myButtons.appendChild(letters);
         letters.appendChild(list);
     }
-}
+};
