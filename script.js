@@ -10,8 +10,8 @@ var reset = false;
 var buttons = document.getElementsByTagName("button")[0];
 var startButton = document.getElementById('reset');
 var hiddenPhraseArray = [];
-var getHint = document.getElementById("hint");
-var showClue = document.getElementById("clue");
+// var getHint = document.getElementById("hint");
+// var showClue = document.getElementById("clue");
 
 let phrases = [
 "i want it that way", //audio1
