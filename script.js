@@ -14,40 +14,22 @@ var getHint = document.getElementById("hint");
 var showClue = document.getElementById("clue");
 
 let phrases = [
-"i want it that way",
-"genie in a bottle",
-"i will always love you",
-"my heart will go on",
-"ice ice baby",
-"tears in heaven",
-"black or white",
-"baby one more time",
-"shape of my heart",
-"cry me a river",
-"a moment like this",
-"viva la vida",
-"empire state of mind",
-"hey there delilah",
-"say my name"
+"i want it that way", //audio1
+"genie in a bottle", //audio2
+"i will always love you", //audio3
+"my heart will go on", //audio4
+"ice ice baby", //audio5
+"tears in heaven", //audio6
+"black or white", //audio7
+"baby one more time", //audio8
+"shape of my heart", //audio9
+"cry me a river", //audio10
+"a moment like this", //audio11
+"viva la vida", //audio12
+"empire state of mind", //audio13
+"hey there delilah", //audio14
+"say my name" //audio15
 ]
-
-hints = [
-"Boy Band",
-"Aladdin",
-"Singer's first name initials is W",
-"CD",
-"From 1990",
-"Classic",
-"From a Legend",
-"Catchy and Sexy",
-"Black and Blue album",
-"Solo Male",
-"Best Selling Single of 2002",
-"British Rock Band",
-"Rapper and Vocals",
-"PWT",
-"DC"
-];
 
 //phraseArray = "g","a", etc.
 var phraseArray = getRandomPhraseArray(phrases);
@@ -66,16 +48,32 @@ function getRandomPhraseArray(phrases) {
     console.log(randomString);
     let splitString = randomString.split("");
     return splitString;
-
 }
+
+var audio1 = new Audio('hint1.mp3');
+var audio2 = new Audio('hint2.mp3');
+var audio3 = new Audio('hint3.mp3');
+var audio4 = new Audio('hint4.mp3');
+var audio5 = new Audio('hint5.mp3');
+var audio6 = new Audio('hint6.mp3');
+var audio7 = new Audio('hint7.mp3');
+var audio8 = new Audio('hint8.mp3');
+var audio9 = new Audio('hint9.mp3');
+var audio10 = new Audio('hint10.mp3');
+var audio11 = new Audio('hint11.mp3');
+var audio12 = new Audio('hint12.mp3');
+var audio13 = new Audio('hint13.mp3');
+var audio14 = new Audio('hint14.mp3');
+var audio15 = new Audio('hint15.mp3');
+
+var hintAudio = [audio1,audio2,audio3,audio4,audio5,audio6,audio7,audio8,audio9,audio10,audio11,audio12,audio13,audio14,audio15];
 
 //Get Hint
 hint.onclick = function() {
 
-    var getHint = hints[ranNum];
-    alert(getHint);
-
-  };
+    var music = hintAudio[ranNum];
+    music.play();
+};
 
 //Add random phrase to display
 function addPhraseToDisplay(arr) {
@@ -162,9 +160,10 @@ keyboard.addEventListener('click', (event) => {
 
 
 function updatePhraseToDisplay(letter) {
-for (var i = 0; i < phraseArray.length; i++){
+    for (var i = 0; i < phraseArray.length; i++){
         if (letter === phraseArray[i]) {
-        ul.childNodes[i].textContent = letter;
+            ul.childNodes[i].textContent = letter;
+
         }
     }
 }
@@ -182,8 +181,7 @@ function resetGame() {
     missed = 0;
     resetHearts();
     changeChosenButtons();
-    // returnLettersToNormal();
-    let phraseArray = getRandomPhraseArray(phrases);
+    phraseArray = getRandomPhraseArray(phrases);
     addPhraseToDisplay(phraseArray);
 }
 
