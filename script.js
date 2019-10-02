@@ -29,7 +29,26 @@ let phrases = [
 "empire state of mind", //audio13
 "hey there delilah", //audio14
 "say my name" //audio15
-]
+];
+
+hints = [
+"Boy Band", //1
+"Aladdin", //2
+"Singer's first name initials is W", //3
+"CD", //4
+"From 1990", //5
+"Classic", //6
+"From a Legend", //7
+"Catchy and Sexy", //8
+"Black and Blue album", //9
+"Solo Male Singer", //10
+"Best Selling Single of 2002", //11
+"British Rock Band", //12
+"Rapper and Vocals", //13
+"PWT", //14
+"DC" //15
+];
+
 
 //phraseArray = "g","a", etc.
 var phraseArray = getRandomPhraseArray(phrases);
@@ -69,10 +88,17 @@ var audio15 = new Audio('hint15.mp3');
 var hintAudio = [audio1,audio2,audio3,audio4,audio5,audio6,audio7,audio8,audio9,audio10,audio11,audio12,audio13,audio14,audio15];
 
 //Get Hint
-hint.onclick = function() {
+hint1.onclick = function() {
 
     var music = hintAudio[ranNum];
     music.play();
+};
+
+//Get Hint
+hint2.onclick = function() {
+
+var getHint = hints[ranNum];
+alert(getHint);
 };
 
 //Add random phrase to display
