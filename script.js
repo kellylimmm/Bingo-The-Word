@@ -67,23 +67,14 @@ function getRandomPhraseArray(phrases) {
     return splitString;
 }
 
-var audio1 = new Audio('hint1.mp3');
-var audio2 = new Audio('hint2.mp3');
-var audio3 = new Audio('hint3.mp3');
-var audio4 = new Audio('hint4.mp3');
-var audio5 = new Audio('hint5.mp3');
-var audio6 = new Audio('hint6.mp3');
-var audio7 = new Audio('hint7.mp3');
-var audio8 = new Audio('hint8.mp3');
-var audio9 = new Audio('hint9.mp3');
-var audio10 = new Audio('hint10.mp3');
-var audio11 = new Audio('hint11.mp3');
-var audio12 = new Audio('hint12.mp3');
-var audio13 = new Audio('hint13.mp3');
-var audio14 = new Audio('hint14.mp3');
-var audio15 = new Audio('hint15.mp3');
-
-var hintAudio = [audio1,audio2,audio3,audio4,audio5,audio6,audio7,audio8,audio9,audio10,audio11,audio12,audio13,audio14,audio15];
+var hintAudio = [];
+function audio () {
+    for (var i = 1; i < 16; i++){
+        audioName = 'hint' + i + '.mp3';
+        hintAudio.push(new Audio(audioName));
+    }
+};
+audio();
 
 //Get Hint
 hint1.onclick = function() {
@@ -95,8 +86,8 @@ hint1.onclick = function() {
 //Get Hint
 hint2.onclick = function() {
 
-var getHint = hints[ranNum];
-alert(getHint);
+    var getHint = hints[ranNum];
+    alert(getHint);
 };
 
 //Add random phrase to display
@@ -193,11 +184,9 @@ function updatePhraseToDisplay(letter) {
 }
 
 function resetHearts() {
-    heart[0].setAttribute('src','heart.svg');
-    heart[1].setAttribute('src','heart.svg');
-    heart[2].setAttribute('src','heart.svg');
-    heart[3].setAttribute('src','heart.svg');
-    heart[4].setAttribute('src','heart.svg');
+    for (var i = 0; i < 5; i++) {
+        heart[i].setAttribute('src','heart.svg');
+    }
 }
 
 
